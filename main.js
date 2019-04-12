@@ -15,6 +15,17 @@ var express = require('express'),
 
 */
 
+
+app.use(function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+
+        next();
+    });
+
+app.get('/deneme', function(req, res, next) {
+  res.send('<p>ben server</p>');
+});
+
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);  //pass a http.Server instance
 //server.listen(443);  //listen on port 80
